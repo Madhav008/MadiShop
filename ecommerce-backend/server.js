@@ -21,4 +21,4 @@ app.use("/api/orders", orderRoutes);
 app.get("api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENTID);
 });
-app.listen(5000, console.log("Server is Running on 5000"));
+app.listen(PORT, console.log("Server is Running on 5000"));
