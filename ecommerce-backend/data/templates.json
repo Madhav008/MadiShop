@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "60cf2f2fc4d229305c63a386"
+  },
+  "name": "template4",
+  "image": "https://www.mybusinessdvc.com/panel/images/template4.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d0670f7ac1aa2d18456e94"
+  },
+  "name": "template1",
+  "image": "https://www.mybusinessdvc.com/panel/images/template1.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d067137ac1aa2d18456e95"
+  },
+  "name": "template2",
+  "image": "https://www.mybusinessdvc.com/panel/images/template2.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d067157ac1aa2d18456e96"
+  },
+  "name": "template5",
+  "image": "https://www.mybusinessdvc.com/panel/images/template5.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d06a447ac1aa2d18456e99"
+  },
+  "name": "template5",
+  "image": "https://www.mybusinessdvc.com/panel/images/template5.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d06a4e7ac1aa2d18456e9a"
+  },
+  "name": "template1",
+  "image": "https://www.mybusinessdvc.com/panel/images/template1.png",
+  "__v": 0
+}]
