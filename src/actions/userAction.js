@@ -36,7 +36,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/auth/login",
+      "http://madishop-backend.herokuapp.com/api/auth/login",
       { email, password },
       config
     );
@@ -57,6 +57,8 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
+
+
 export const register = (name, email, password) => async (dispatch) => {
   try {
     dispatch({
@@ -70,7 +72,7 @@ export const register = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/auth/register",
+      "http://madishop-backend.herokuapp.com/api/auth/register",
       { name, email, password },
       config
     );
@@ -112,7 +114,7 @@ export const getUserDetail = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/auth/${id}`, config);
+    const { data } = await axios.get(`http://madishop-backend.herokuapp.com/api/auth/${id}`, config);
     dispatch({
       type: USER_DETAIL_SUCCESS,
       payload: data,
@@ -144,7 +146,7 @@ export const updateUserDetail = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/auth/profile`, user, config);
+    const { data } = await axios.put(`http://madishop-backend.herokuapp.com/api/auth/profile`, user, config);
     dispatch({
       type: USER_UPDATE_SUCCESS,
       payload: data,
@@ -161,13 +163,13 @@ export const updateUserDetail = (user) => async (dispatch, getState) => {
 };
 
 export const logout = () => (dispatch) => {
-  localStorage.removeItem("userInfo");
-  localStorage.removeItem("cartItems");
-  localStorage.removeItem("shippingAddress");
-  localStorage.removeItem("paymentMethod");
-  dispatch({ type: USER_LOGOUT });
-  dispatch({ type: USER_DETAILS_RESET });
-  dispatch({ type: ORDER_LIST_MY_RESET });
-  dispatch({ type: USER_DETAILS_RESET });
-  document.location.href = "/login";
-};
+  localStorage.removeItem('userInfo')
+  localStorage.removeItem('cartItems')
+  localStorage.removeItem('shippingAddress')
+  localStorage.removeItem('paymentMethod')
+  dispatch({ type: USER_LOGOUT })
+  dispatch({ type: USER_DETAILS_RESET })
+  dispatch({ type: ORDER_LIST_MY_RESET })
+  dispatch({ type: USER_DETAILS_RESET })
+  document.location.href = '/login'
+}
