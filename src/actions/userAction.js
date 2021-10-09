@@ -36,7 +36,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/auth/login",
+      "https://madishop-backend.herokuapp.com/api/auth/login",
       { email, password },
       config
     );
@@ -72,7 +72,7 @@ export const register = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/auth/register",
+      "https://madishop-backend.herokuapp.com/api/auth/register",
       { name, email, password },
       config
     );
@@ -114,7 +114,7 @@ export const getUserDetail = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/auth/${id}`, config);
+    const { data } = await axios.get(`https://madishop-backend.herokuapp.com/api/auth/${id}`, config);
     dispatch({
       type: USER_DETAIL_SUCCESS,
       payload: data,
@@ -146,7 +146,7 @@ export const updateUserDetail = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/auth/profile`, user, config);
+    const { data } = await axios.put(`https://madishop-backend.herokuapp.com/api/auth/profile`, user, config);
     dispatch({
       type: USER_UPDATE_SUCCESS,
       payload: data,
