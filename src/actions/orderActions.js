@@ -36,10 +36,15 @@ export const createOrder = (order) => async (dispatch, getState) => {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${userInfo.token}`,
+        'Access-Control-Allow-Origin': true,
       },
     };
 
-    const { data } = await axios.post(`http://madishop-backend.herokuapp.com/api/orders`, order, config);
+    const { data } = await axios.post(
+      `https://madishop-backend.herokuapp.com/api/orders`,
+      order,
+      config
+    );
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -80,16 +85,19 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
+        'Access-Control-Allow-Origin': true,
       },
     };
 
-    const { data } = await axios.get(`http://madishop-backend.herokuapp.com/api/orders/${id}`, config);
+    const { data } = await axios.get(
+      `https://madishop-backend.herokuapp.com/api/orders/${id}`,
+      config
+    );
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
       payload: data,
     });
-
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -120,11 +128,12 @@ export const payOrder =
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${userInfo.token}`,
+          'Access-Control-Allow-Origin': true,
         },
       };
 
       const { data } = await axios.put(
-        `http://madishop-backend.herokuapp.com/api/orders/${orderId}/pay`,
+        `https://madishop-backend.herokuapp.com/api/orders/${orderId}/pay`,
         paymentResult,
         config
       );
@@ -161,11 +170,12 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
+        'Access-Control-Allow-Origin': true,
       },
     };
 
     const { data } = await axios.put(
-      `http://madishop-backend.herokuapp.com/api/orders/${order._id}/deliver`,
+      `https://madishop-backend.herokuapp.com/api/orders/${order._id}/deliver`,
       {},
       config
     );
@@ -202,10 +212,14 @@ export const listMyOrders = () => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
+        'Access-Control-Allow-Origin': true,
       },
     };
 
-    const { data } = await axios.get(`http://madishop-backend.herokuapp.com/api/orders/myorders/all`, config);
+    const { data } = await axios.get(
+      `https://madishop-backend.herokuapp.com/api/orders/myorders/all`,
+      config
+    );
 
     dispatch({
       type: ORDER_LIST_MY_SUCCESS,
@@ -239,10 +253,14 @@ export const listOrders = () => async (dispatch, getState) => {
     const config = {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
+        "Access-Control-Allow-Origin": true,
       },
     };
 
-    const { data } = await axios.get(`http://madishop-backend.herokuapp.com/api/orders`, config);
+    const { data } = await axios.get(
+      `https://madishop-backend.herokuapp.com/api/orders`,
+      config
+    );
 
     dispatch({
       type: ORDER_LIST_SUCCESS,

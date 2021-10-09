@@ -8,7 +8,12 @@ import {
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(
-    `http://madishop-backend.herokuapp.com/api/products/${id}`
+    `https://madishop-backend.herokuapp.com/api/products/${id}`,
+    {
+      headers: {
+        "Access-Control-Allow-Origin": true,
+      },
+    }
   );
 
   dispatch({

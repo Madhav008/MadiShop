@@ -32,11 +32,12 @@ export const login = (email, password) => async (dispatch) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': true,
       },
     };
 
     const { data } = await axios.post(
-      "http://madishop-backend.herokuapp.com/api/auth/login",
+      "https://madishop-backend.herokuapp.com/api/auth/login",
       { email, password },
       config
     );
@@ -68,11 +69,12 @@ export const register = (name, email, password) => async (dispatch) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': true,
       },
     };
 
     const { data } = await axios.post(
-      "http://madishop-backend.herokuapp.com/api/auth/register",
+      "https://madishop-backend.herokuapp.com/api/auth/register",
       { name, email, password },
       config
     );
@@ -110,11 +112,12 @@ export const getUserDetail = (id) => async (dispatch, getState) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': true,
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
 
-    const { data } = await axios.get(`http://madishop-backend.herokuapp.com/api/auth/${id}`, config);
+    const { data } = await axios.get(`https://madishop-backend.herokuapp.com/api/auth/${id}`, config);
     dispatch({
       type: USER_DETAIL_SUCCESS,
       payload: data,
@@ -143,10 +146,11 @@ export const updateUserDetail = (user) => async (dispatch, getState) => {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${userInfo.token}`,
+        'Access-Control-Allow-Origin': true,
       },
     };
 
-    const { data } = await axios.put(`http://madishop-backend.herokuapp.com/api/auth/profile`, user, config);
+    const { data } = await axios.put(`https://madishop-backend.herokuapp.com/api/auth/profile`, user, config);
     dispatch({
       type: USER_UPDATE_SUCCESS,
       payload: data,

@@ -11,7 +11,14 @@ import {
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get("http://madishop-backend.herokuapp.com/api/products");
+    const { data } = await axios.get(
+      "https://madishop-backend.herokuapp.com/api/products",
+      {
+        headers: {
+          "Access-Control-Allow-Origin": true,
+        },
+      }
+    );
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
@@ -32,7 +39,14 @@ export const listProductsDetails = (id) => async (dispatch) => {
   try {
     console.log(id);
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const { data } = await axios.get(`http://madishop-backend.herokuapp.com/api/products/${id}`);
+    const { data } = await axios.get(
+      `https://madishop-backend.herokuapp.com/api/products/${id}`,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": true,
+        },
+      }
+    );
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
       payload: data,
