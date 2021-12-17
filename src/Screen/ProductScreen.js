@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Row,
   Col,
@@ -10,31 +10,28 @@ import {
   Form,
 } from "react-bootstrap";
 import Ratting from "../components/Ratting";
-// import Loader from "../components/Loader";
+import Loader from "../components/Loader";
 import Message from "../components/Message";
-// import { useDispatch, useSelector } from "react-redux";
-// import { listProductsDetails } from "../actions/productActions";
+import { useDispatch, useSelector } from "react-redux";
+import { listProductsDetails } from "../actions/productActions";
 import axios from "axios";
 
 const ProductScreen = ({ history, match }) => {
-  // const dispatch = useDispatch();
-  const [products, setProduct] = useState([]);
+  const dispatch = useDispatch();
+  // const [products, setProduct] = useState([]);
   const [qty, setQty] = useState(1);
 
-  // const productDetails = useSelector((state) => state.productDetails);
-  // const { loading, error, products } = productDetails;
+  const productDetails = useSelector((state) => state.productDetails);
+  const { loading, error, products } = productDetails;
 
   useEffect(() => {
-    // dispatch(listProductsDetails(match.params.id));
-    const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${match.params.id}`);
-      setProduct(data);
-    };
-    fetchProduct();
-  }, [
-    //  dispatch,
-    match,
-  ]);
+    dispatch(listProductsDetails(match.params.id));
+    // const fetchProduct = async () => {
+    //   const { data } = await axios.get(`/api/products/${match.params.id}`);
+    //   setProduct(data);
+    // };
+    // fetchProduct();
+  }, [dispatch, match]);
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
@@ -100,10 +97,7 @@ const ProductScreen = ({ history, match }) => {
                         ))}
                       </Form.Control>
                     </Col>
-                    <Col
-                      md={2}
-                      variant="light"
-                    ></Col>
+                    <Col md={2} variant="light"></Col>
                   </Row>
                 </ListGroup.Item>
               )}
